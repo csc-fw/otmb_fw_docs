@@ -1,0 +1,138 @@
+% Customizable fields and text areas start with % >> below.
+% Lines starting with the comment character (%) are normally removed before release outside the collaboration, but not those comments ending lines
+
+% svn info. These are modified by svn at checkout time.
+% The last version of these macros found before the maketitle will be the one on the front page,
+% so only the main file is tracked.
+% Do not edit by hand!
+\RCS$Revision: 274820 $
+\RCS$HeadURL: svn+ssh://tahuang@svn.cern.ch/reps/tdr2/notes/DN-13-022/trunk/DN-13-022.tex $
+\RCS$Id: DN-13-022.tex 274820 2015-01-24 00:27:49Z pakhotin $
+%%%%%%%%%%%%% local definitions %%%%%%%%%%%%%%%%%%%%%
+% This allows for switching between one column and two column (cms@external) layouts
+% The widths should  be modified for your particular figures. You'll need additional copies if you have more than one standard figure size.
+\newlength\cmsFigWidth
+\ifthenelse{\boolean{cms@external}}{\setlength\cmsFigWidth{0.85\columnwidth}}{\setlength\cmsFigWidth{0.4\textwidth}}
+\ifthenelse{\boolean{cms@external}}{\providecommand{\cmsLeft}{top}}{\providecommand{\cmsLeft}{left}}
+\ifthenelse{\boolean{cms@external}}{\providecommand{\cmsRight}{bottom}}{\providecommand{\cmsRight}{right}}
+%%%%%%%%%%%%%%%  Title page %%%%%%%%%%%%%%%%%%%%%%%%
+\cmsNoteHeader{DN-13-022} % This is over-written in the CMS environment: useful as preprint no. for export versions
+% >> Title: please make sure that the non-TeX equivalent is in PDFTitle below
+\title{Improvements to ME1/1 Trigger Motherboard Algorithm for Operation under High Pile-Up Running Conditions}
+
+% >> Authors
+%Author is always "The CMS Collaboration" for PAS and papers, so author, etc, below will be ignored in those cases
+%For multiple affiliations, create an address entry for the combination
+%To mark authors as primary, use the \author* form
+\address[ghent]{Ghent University}
+\address[tamu]{Texas A\&M University}
+\address[ucla]{University of California, Los Angeles}
+\address[osaka]{University of Seoul}
+\address[ufl]{Univerosity of Florida}
+\author[ghent]{Sven Dildick}
+\author[tamu]{Jose Roberto Dimas Valle}
+\author[ucla]{Jay Hauser}
+\author[tamu]{Tao Huang}
+\author[tamu]{Vadim Khotilovich}
+\author[tamu]{Vyacheslav Krutelyov}
+\author[osaka]{Jason Lee}
+\author[ufl]{Alexander Madorsky}
+\author[tamu]{Yuriy Pakhotin}
+\author[ucla]{Andrew Peck}
+\author[tamu]{Alexei Safonov}
+\author[tamu]{Aysen Tatarinov}
+\author[ucla]{Vyacheslav Valuev}
+
+% >> Date
+% The date is in yyyy/mm/dd format. Today has been
+% redefined to match, but if the date needs to be fixed, please write it in this fashion.
+% For papers and PAS, \today is taken as the date the head file (this one) was last modified according to svn: see the RCS Id string above.
+% For the final version it is best to "touch" the head file to make sure it has the latest date.
+\date{\today}
+
+% >> Abstract
+% Abstract processing:
+% 1. **DO NOT use \include or \input** to include the abstract: our abstract extractor will not search through other files than this one.
+% 2. **DO NOT use %**                  to comment out sections of the abstract: the extractor will still grab those lines (and they won't be comments any longer!).
+% 3. For PASs: **DO NOT use tex macros**         in the abstract: CDS MathJax processor used on the abstract doesn't understand them _and_ will only look within $$. The abstracts for papers are hand formatted so macros are okay.
+\abstract{
+Improvements to ME1/1 trigger motherboard algorithm for operation under high pile-up conditions are described as well as details of their configuration in software. Individual effects of these improvements on ME1/1 trigger efficiency are quantified and ranked in terms of their importance in simulation studies.
+}
+
+% >> PDF Metadata
+% Do not comment out the following hypersetup lines (metadata). They will disappear in NODRAFT mode and are needed by CDS.
+% Also: make sure that the values of the metadata items are sensible and are in plain text:
+% (1) no TeX! -- for \sqrt{s} use sqrt(s) -- this will show with extra quote marks in the draft version but is okay).
+% (2) no %.
+% (3) No curly braces {}.
+\hypersetup{%
+pdfauthor={Aysen Tatarinov},%
+pdftitle={Improvements to ME1/1 Trigger Motherboard Algorithm for Operation under High Pile-Up Running Conditions},%
+pdfsubject={CMS},%
+pdfkeywords={LHC, CMS, Muons, CSC, Trigger}}
+
+\maketitle %maketitle comes after all the front information has been supplied
+% >> Text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Begin text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% **DO NOT REMOVE THE BIBLIOGRAPHY** which is located before the appendix.
+%% You can take the text between here and the bibiliography as an example which you should replace with the actual text of your document.
+%% If you include other TeX files, be sure to use "\input{filename}" rather than "\input filename".
+%% The latter works for you, but our parser looks for the braces and will break when uploading the document.
+
+\tableofcontents
+
+\newpage
+\tracinginput{sections/introduction.tex}
+%\input{sections/introduction}
+\clearpage
+
+\newpage
+\tracinginput{sections/muon_trigger.tex}
+%\input{sections/muon_trigger}
+\clearpage
+
+\newpage
+\tracinginput{sections/csc.tex}
+%\input{sections/csc}
+\clearpage
+
+\newpage
+\tracinginput{sections/algorithm_2007.tex}
+%\input{sections/algorithm_2007}
+\clearpage
+
+\newpage
+\tracinginput{sections/algorithm_SLHC.tex}
+%\input{sections/algorithm_SLHC}
+\clearpage
+
+\newpage
+\tracinginput{sections/algorithm_SLHC_results.tex}
+%\input{sections/algorithm_SLHC_results}
+\clearpage
+
+%\newpage
+%\tracinginput{sections/algorithm_SLHC_GEM.tex}
+%\input{sections/algorithm_SLHC_GEM}
+%\clearpage
+
+% >> acknowledgements (for journal papers)
+% Please include the latest version from https://twiki.cern.ch/twiki/bin/viewauth/CMS/Internal/PubAcknow.
+%\section*{Acknowledgements}
+% ack-text
+
+%% **DO NOT REMOVE BIBLIOGRAPHY**
+\bibliography{auto_generated}   % will be created by the tdr script.
+%\input{DN-13-022.bib}
+
+\appendix
+
+\newpage
+\tracinginput{sections/me11.tex}
+%\input{sections/me11}
+\clearpage
+
+\newpage
+\tracinginput{sections/configuration.tex}
+%\input{sections/configuration}
+\clearpage
